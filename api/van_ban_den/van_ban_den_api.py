@@ -36,6 +36,8 @@ def vanBanDenUpdateOne(id):
     input_json = request.get_json(force=True)
     print('Dữ liệu được cập nhật: ', input_json)
 
-    db.vanBanDen.update_one({"_id": ObjectId(id)}, input_json)
+    db.vanBanDen.update_one({"_id": ObjectId(id)}, {
+        "$set": input_json
+    })
     
     return jsonify(message="success")
